@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta charset=utf-8>
+    <meta name=description content="index0.html">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <header class="head">
+                员工信息
+        </header>
+        <section class="section">
+                <input type="text" name="" id="user"><button id="btn">搜索</button>
+        </section>
+        <footer class="footer">
+            <label>姓名</label>
+            <input type="text" name="" value="" id="name">
+            <label>手机号</label>
+            <input type="text" name="" value="" id="psd">
+            <button id="btn2">保存</button><button id="btn3">显示所有</button>
+            <h5>员工信息列表</h5>
+            <ul>
+
+            </ul>
+        </footer>
+    </div>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script>
+        $(document).ready(function(){
+          var arr=[
+              {
+                "name":"张三",
+                "phone":"15621052315"
+              },
+              {
+                "name":"李四",
+                "phone":"18621052355"
+              },
+              {
+                "name":"王五",
+                "phone":"14621058315"
+              }
+          ];
+          $("#btn").click(function(){
+            var txt=$("#user").val();
+                   $.each(arr,function(i,val){
+                    if(val.name.indexOf(txt)!=-1){
+                        $("#name").val(txt);
+                        $("#psd").val(val.phone)
+                    }else{
+                        alert("查无此人!!")
+                    }
+                   })
+          })
+          $("#btn3").click(function(){
+                var str='';
+                $.each(arr,function(i,val){
+                    str+=`<li>"姓名:   "${val.name}<span>"电话:"${val.phone}</span></li>`
+                })
+                $("ul").append(str);
+;          })
+        })
+    </script>
+</body>
+</html>
